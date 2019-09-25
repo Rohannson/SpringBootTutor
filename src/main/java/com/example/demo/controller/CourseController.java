@@ -8,10 +8,7 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -44,6 +41,22 @@ public class CourseController {
         List<Course> findedCourse = courseService.searchByCourseName(inputString);
 
         return new ResponseEntity(findedCourse, HttpStatus.OK);
+    }
+
+    @GetMapping(path = "/twoSum/{inputInteger}", produces = "application/json")
+    public HttpEntity findTwoSum(@PathVariable("inputInteger") Integer inputInteger){
+
+        int[] res = courseService.findTwoSum1(inputInteger);
+
+        return new ResponseEntity(res, HttpStatus.OK);
+    }
+
+    @GetMapping(path = "/twoSum2", produces = "application/json")
+    public HttpEntity findTwoSum2(@RequestBody ArrayInput arrayInput) {
+
+        int[] res = courseService.findTwoSum2(arrayInput);
+
+        return new ResponseEntity(res, HttpStatus.OK);
     }
 }
 

@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 
+import com.example.demo.controller.ArrayInput;
 import com.example.demo.modal.Course;
 import com.example.demo.repository.CourseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,16 @@ public class CourseService {
     public List<Course> searchByCourseName(String input){
 
         return courseRepository.findCourseByName(input);
+    }
+
+    public int[] findTwoSum1(int intput){
+
+        return courseRepository.returnTwoSum(intput);
+    }
+
+    public int[] findTwoSum2(ArrayInput arrayInput) {
+
+        return courseRepository.returnTwoSum2(arrayInput);
     }
 
 }
